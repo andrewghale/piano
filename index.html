@@ -4,31 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Piano</title>
+    <title>Chord Calculator</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="main-container">
       <h1>
-        <span class="emojis">🎼🎹</span>Musical Interval Calculator<span
-          class="emojis"
+        <span class="emojis">🎼🎹</span>Chord Calculator<span class="emojis"
           >🎹🎼</span
         >
       </h1>
       <ul>
-        <li>Type accidentals as sharps (#)</li>
+        <li>Type accidentals as sharps(#) (for now...)</li>
         <li>Note 1 is the lower pitched note</li>
         <li>Note 2 is the higher pitched note</li>
         <li>Interval is calculated from Note 1 moving up in pitch to Note 2</li>
       </ul>
+      <div class="accidentals-container">
+        <button class="sharp" id="sharp-btn">#</button>
+        <button class="flat" id="flat-btn">♭</button>
+      </div>
       <form class="main-form">
         <label class="label" for="note1"
           >Note 1:
-          <input type="text" id="note1Field" class="note1" maxlength="2" />
+          <input type="text" id="note1Field" class="note1" maxlength="3" />
         </label>
         <label class="label" for="note2"
           >Note 2:
-          <input type="text" id="note2Field" class="note2" maxlength="2" />
+          <input type="text" id="note2Field" class="note2" maxlength="3" />
+        </label>
+        <label class="label" for="note3"
+          >Note 3:
+          <input type="text" id="note3Field" class="note3" maxlength="3" />
+        </label>
+        <label class="label" for="note4"
+          >Note 4:
+          <input type="text" id="note4Field" class="note4" maxlength="3" />
         </label>
         <input
           type="submit"

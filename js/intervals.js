@@ -1,27 +1,69 @@
 const note1 = document.getElementById("note1Field")
 const note2 = document.getElementById("note2Field")
+const note3 = document.getElementById("note3Field")
+const note4 = document.getElementById("note4Field")
+
+const sharpBtn = document.getElementById("sharp-btn")
+const flatBtn = document.getElementById("flat-btn")
+
 const result = document.getElementById("result")
 const button = document.getElementById("submitGuess")
 
+const chordTypes = [
+  {
+    "code": "4.7",
+    "name": ""
+  },
+  {
+    "code": "3.7",
+    "name": "m"
+  },
+  {
+    "code": "2.7",
+    "name": "sus2"
+  },
+  {
+    "code": "5.7",
+    "name": "sus4"
+  },
+  {
+    "code": "4.7.11",
+    "name": "maj7"
+  },
+  {
+    "code": "4.7.10",
+    "name": "7"
+  },
+  {
+    "code": "3.7.10",
+    "name": "m7"
+  },
+  {
+    "code": "4.8",
+    "name": "aug"
+  },
+  {
+    "code": "3.6",
+    "name": "dim"
+  }
+]
 
-const intervalNames = {
-  0: "Unison",
-  1: "Minor 2nd (1 semitone)",
-  2: "Major 2nd (2 semitones)",
-  3: "Minor 3rd (3 semitones)",
-  4: "Major 3rd (4 semitones)",
-  5: "Perfect 4th (5 semitones)",
-  6: "Diminished 5th / Augmented 4th (6 semitones)",
-  7: "Perfect 5th (7 semitones)",
-  8: "Minor 6th (8 semitones)",
-  9: "Major 6th (9 semitones)",
-  10: "Minor 7th (10 semitones)",
-  11: "Major 7th (11 semitones)",
-  12: "Octave (12 semitones)"
-}
-
-function noteNumber(note1, note2) {
+const makeChordCode = (note1, note2, note3, note4) => {
+  let note1Index, note2Index, note3Index, note4Index
+  let chord = []
   const notesArr = [
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#",
+    "A",
+    "A#",
+    "B",
     "C",
     "C#",
     "D",
@@ -47,18 +89,61 @@ function noteNumber(note1, note2) {
     "A#",
     "B"
   ]
-  // get index of note 1 in array
-  let note1Index = notesArr.indexOf(note1);
-  // split orig array after first note
-  // to make new array for finding second notes index
-  let secondNotesArr = notesArr.splice(note1Index + 1)
-  // get index of second note in second array
-  let note2Index = secondNotesArr.indexOf(note2)
-  return(intervalNames[note2Index + 1])
+  note1Index = notesArr.indexOf(note1);
+  note2Index = notesArr.indexOf(note2, note1Index)
+  note3Index = notesArr.indexOf(note3, note2Index)
+  note4Index = notesArr.indexOf(note4, note3Index)
+
+  chord.push(note2Index - note1Index, note3Index - note1Index)
+  if (note4Index !== -1) {
+  chord.push(note4Index
+     - note1Index
+  )}
+  return chord
 }
+
+const makeNameSpan = (str) => {
+  return `<span class="smaller">${str}</span>`
+}
+
+const findChordTypes = (str) => {
+  let theResult = chordTypes.find((el) => el.code === str)
+  return theResult.name
+}
+
+const convertToSharp = (str) => {
+  if (str === "B♭" || str === "b♭") {
+    str = "A#"
+  } else if (str === "D♭" || str === "d♭") {
+    str = "C#"
+  } else if (str === "E♭" || str === "e♭") {
+    str = "D#"
+  } else if (str === "G♭" || str === "g♭") {
+    str = "F#"
+  } else if (str === "A♭" || str === "a♭") {
+    str = "G#"
+  }
+  return str
+}
+
+// Event Listeners //
+sharpBtn.addEventListener('click', function(e) {
+  note1.value = note1.value + `#`
+})
+
+flatBtn.addEventListener('click', function(e) {
+  note1.value = note1.value + `♭`
+  // console.log(this)
+})
 
 button.addEventListener('click', function(e) {
   e.preventDefault()
-  const interval = noteNumber(note1.value.toUpperCase(), note2.value.toUpperCase())
-  result.innerHTML = `The interval from ${note1.value.toUpperCase()} to ${note2.value.toUpperCase()} is a ${interval}`
+  let chordResult = (makeChordCode(
+    convertToSharp(note1.value).toUpperCase(),
+    convertToSharp(note2.value).toUpperCase(),
+    convertToSharp(note3.value).toUpperCase(),
+    convertToSharp(note4.value).toUpperCase()))
+  chordResult = chordResult.join('.').toString()
+  console.log(`chord result is ${chordResult}`)
+  result.innerHTML = `${note1.value.toUpperCase()} ${makeNameSpan(findChordTypes(chordResult))}`
 })
