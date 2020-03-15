@@ -1,0 +1,83 @@
+.measuring {
+  margin: 1em 0.5em 0.5em 1em;
+  height: 10px;
+  border: 1px solid white;
+  width: 922px;
+  display: flex;
+}
+
+.key-measure {
+  border: 1px solid white;
+  min-width: 30px;
+  flex-grow: 1;
+}
+
+.accidentals-container {
+  border: 2px solid white;
+  margin: 1rem;
+  padding: 2rem;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.accidentals-container button {
+  height: fit-content;
+  width: fit-content;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.main-form {
+  display: flex;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid;
+  margin: 1rem;
+  border-radius: 3px;
+  width: 140px;
+}
+
+input[type="text"] {
+  height: 45px;
+  border-radius: 3px;
+  border: 2px solid;
+  font-size: 1.8rem;
+  padding-left: 0.5rem;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  border: 2px solid;
+  border-radius: 15px;
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+  cursor: pointer;
+  width: 150px;
+  font-size: 2rem;
+}
+
+.emojis {
+  margin: 0 1rem;
+}
+
+#result {
+  font-size: 2rem;
+  margin-left: 1rem;
+  display: flex;
+  border: 3px solid white;
+  border-radius: 5px;
+  padding: 1rem;
+  width: fit-content;
+}
+
+.smaller {
+  font-size: 1rem;
+  margin-left: 0.2rem;
+}

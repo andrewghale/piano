@@ -7,103 +7,103 @@ const button = document.getElementById("submitGuess")
 
 const chordTypes = [
   {
-    "code": ".4.7",
+    "code": "4.7",
     "name": "",
   },
   {
-    "code": ".5.7",
+    "code": "5.7",
     "name": "sus4"
   },
   {
-    "code": ".2.7",
+    "code": "2.7",
     "name": "sus2"
   },
   {
-    "code": ".1.7",
+    "code": "1.7",
     "name": "no3/5(♭9)"
   },
   {
-    "code": ".6.7",
+    "code": "6.7",
     "name": "no3/5(#11)"
   },
   {
-    "code": ".6.7.11",
+    "code": "6.7.11",
     "name": "no3/5/maj7(#11)"
   },
   {
-    "code": ".7.10",
+    "code": "7.10",
     "name": "no3/5 7"
   },
   {
-    "code": ".4.7.14",
+    "code": "4.7.14",
     "name": "(add9)"
   },
   {
-    "code": ".4.7.9",
+    "code": "4.7.9",
     "name": "6"
   },
   {
-    "code": ".4.7.11",
+    "code": "4.7.11",
     "name": "maj7"
   },
   {
-    "code": ".5.7.11",
+    "code": "5.7.11",
     "name": "sus4/maj7"
   },
   {
-    "code": ".7.11",
+    "code": "7.11",
     "name": "no3/5/maj7"
   },
   {
-    "code": ".3.7",
+    "code": "3.7",
     "name": "m"
   },
   {
-    "code": ".3.7.14",
+    "code": "3.7.14",
     "name": "m9"
   },
   {
-    "code": ".3.7.9",
+    "code": "3.7.9",
     "name": "m6"
   },
   {
-    "code": ".3.7.8",
+    "code": "3.7.8",
     "name": "mflat6"
   },
   {
-    "code": ".3.7.10",
+    "code": "3.7.10",
     "name": "m7"
   },
   {
-    "code": ".3.7.11",
+    "code": "3.7.11",
     "name": "m maj7"
   },
   {
-    "code": ".3.6.10",
+    "code": "3.6.10",
     "name": "m7flat5"
   },
   {
-    "code": ".4.7.10",
+    "code": "4.7.10",
     "name": "7"
   },
   {
-    "code": ".2.7.9",
+    "code": "2.7.9",
     "name": "6sus2"
   },
   {
-    "code": ".5.7.10",
+    "code": "5.7.10",
     "name": "7sus4"
   },
   {
-    "code": ".4.8",
+    "code": "4.8",
     "name": "aug"
   },
   {
-    "code": ".3.6",
+    "code": "3.6",
     "name": "dim"
   },
   {
-    "code": ".3.6.9",
+    "code": "3.6.9",
     "name": "dim7"
   }
 ]
@@ -162,15 +162,19 @@ const makeChordCode = (note1, note2, note3, note4) => {
   return chord
 }
 
+// const makeNameSpan = (str) => {
+//   return `<span class="smaller">${str}</span>`
+// }
+
 const findChordTypes = (str) => {
   let theResult = chordTypes.find((el) => el.code === str)
   if (theResult == undefined) {
-    return
+    return "(chord not added yet)"
   } else { return theResult.name }
 }
 
 const convertToSharp = (str) => {
-  if (str === `B♭` || str === "b♭") {
+  if (str === "B♭" || str === "b♭") {
     str = "A#"
   } else if (str === "E♭" || str === "e♭") {
     str = "D#"
@@ -203,87 +207,29 @@ const findChordQuality = (str) => {
   }
 }
 
-
-//this works
-
-// str = `.2.3.7`
-// let chordName = ``
-//   if (str.includes(`.7`)) {
-//     if (str.includes(`.2`)) {
-//       if (!str.includes(`.3`)) {
-//           chordName += `sus2`
-//         }
-//       if (str.includes(`.3`)) {
-//           chordName += `minoradd9`
-//         }
-//       }
-//   }
-// console.log(chordName)
-
-
-// str = `.2.4.7`
-// let chordName = ``
-//   if (str.includes(`.7`)) {
-//     if (str.includes(`.2`)) {
-//       if (!str.includes(`.4`)) {
-//           chordName += `sus2`
-//         }
-//       if (str.includes(`.4`)) {
-//           chordName += `majoradd9`
-//         }
-//       }
-//   }
-// console.log(chordName)
-
-
-// Major, sus2, sus4, aug, dim or minor chord
-const makeTriad = (str) => {
-  chordName = ``
-  if (str.includes(`.7`)) {
-    if (str.includes(`.2`)) {
-      if (!str.includes(`.3`)) {
-          chordName += `sus2`
-        }
-      }
-    else if (str.includes(`.3`)) {
-      chordName += `minor`
-    } else if (str.includes(`.4`)) {
-      chordName += `major`
-    } else if (str.includes(`.5`)) {
-      chordName += `sus4`
-    } else {return (`not valid chord`)}
-  } else if (str.includes(`.6`)) {
-    if (str.includes(`.3`)) {
-      chordName += `dim`
-    } else if (str.includes(`.4`)) {
-      chordName += `major ♭5`
-    } else {return (`not valid chord`)}
-  } else if (str.includes(`.8`)) {
-    if (str.includes(`.4`)) {
-      chordName += `aug`
-    } else {return (`not valid chord`)}
+// Major or minor Chord
+const majMinOrSusTriad = (str) => {
+  if (str.includes(".7")) {
+    if (str.charAt(0) === "2") {
+        return ("sus2")
+    } else if (str.charAt(0) === "3") {
+        return ("minor")
+    } else if (str.charAt(0) === "4") {
+        return ("major")
+    } else if (str.charAt(0) === "5") {
+        return ("sus4")
+    } else {return ("not valid chord")}
+  } else if (str.includes(".6")) {
+    if (str.charAt(0) === "3") {
+      return ("dim")
+    } else if (str.charAt(0) === "4") {
+      return ("major ♭5")
+    } else {return ("not valid chord")}
+  } else if (str.includes(".8")) {
+    if (str.charAt(0) === "4") {
+      return ("aug")
+    } else {return ("not valid chord")}
   }
-  return chordName
-}
-
-const seventh = (str) => {
-  addSeventh = ``
-  if (str.includes(`.10`)) {
-    addSeventh += `7`
-  } else if (str.includes(`.11`)){
-    addSeventh += `maj7`
-  }
-  return addSeventh
-}
-
-const secondOrNinth = (str) => {
-  let extension = ``
-  if (str.includes(`2`) && str.includes(`.3`) || str.includes(`2`) && str.includes(`.4`) ) {
-     extension += `add2`
-  } else if (str.includes(`.14`) && str.includes(`.3`) || str.includes(`.14`) && str.includes(`.4`) ) {
-    extension += `add9`
-  }
-  return extension
 }
 
 // 5 Chord
@@ -295,33 +241,85 @@ const is5Chord = (str) => {
   }
 }
 
-note1.addEventListener('keyup', function(){
-  mainFunc()
-})
-note2.addEventListener('keyup', function(){
-  mainFunc()
-})
-note3.addEventListener('keyup', function(){
-  mainFunc()
-})
-note4.addEventListener('keyup', function(){
-  mainFunc()
-})
-
 button.addEventListener('click', function(e) {
   e.preventDefault()
-  mainFunc()
-})
-
-function mainFunc() {
   let chordResult = (makeChordCode(
     convertToSharp(note1.value).toUpperCase(),
     convertToSharp(note2.value).toUpperCase(),
     convertToSharp(note3.value).toUpperCase(),
     convertToSharp(note4.value).toUpperCase()))
   chordResult = chordResult.join('.').toString()
-  let firstDot = `.`
-  chordResult = firstDot.concat(chordResult)
   console.log(`chord result is ${chordResult}`)
   result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
-}
+})
+let context = null;
+let oscillator = null;
+
+const getOrCreateContext = () => {
+  if (!context) {
+    context = new AudioContext();
+    oscillator = context.createOscillator();
+    oscillator.type = "triangle";
+    oscillator.connect(context.destination);
+  }
+  return context;
+};
+
+let isStarted = false;
+
+const noteOn = midiNote => {
+  getOrCreateContext();
+  const freq = Math.pow(2, (midiNote - 69) / 12) * 440;
+  oscillator.frequency.setTargetAtTime(freq, context.currentTime, 0);
+  if (!isStarted) {
+    oscillator.start(0);
+    isStarted = true;
+  } else {
+    context.resume();
+  }
+};
+
+const noteOff = () => {
+  context.suspend();
+};
+
+// Below is keyboard emulation for C4-F5 a-' keys
+const emulatedKeys = {
+  a: 60,
+  w: 61,
+  s: 62,
+  e: 63,
+  d: 64,
+  f: 65,
+  t: 66,
+  g: 67,
+  y: 68,
+  h: 69,
+  u: 70,
+  j: 71,
+  k: 72,
+  o: 73,
+  l: 74,
+  p: 75,
+  ";": 76,
+  "'": 77
+};
+
+document.addEventListener("keydown", e => {
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  // console.log(e);
+  if (emulatedKeys.hasOwnProperty(e.key)) {
+    noteOn(emulatedKeys[e.key]);
+    key.classList.add('playing');
+    setTimeout(() => {
+      key.classList.remove('playing');
+    }, 100);
+  }
+});
+
+document.addEventListener("keyup", e => {
+  if (emulatedKeys.hasOwnProperty(e.key)) {
+    noteOff();
+  }
+});
+//# sourceMappingURL=app.js.map
