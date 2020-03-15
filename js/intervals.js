@@ -295,6 +295,19 @@ const is5Chord = (str) => {
   }
 }
 
+function mainFunc() {
+  let chordResult = (makeChordCode(
+    convertToSharp(note1.value).toUpperCase(),
+    convertToSharp(note2.value).toUpperCase(),
+    convertToSharp(note3.value).toUpperCase(),
+    convertToSharp(note4.value).toUpperCase()))
+  chordResult = chordResult.join('.').toString()
+  let firstDot = `.`
+  chordResult = firstDot.concat(chordResult)
+  console.log(`chord result is ${chordResult}`)
+  result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
+}
+
 note1.addEventListener('keyup', function(){
   mainFunc()
 })
@@ -313,15 +326,25 @@ button.addEventListener('click', function(e) {
   mainFunc()
 })
 
-function mainFunc() {
-  let chordResult = (makeChordCode(
-    convertToSharp(note1.value).toUpperCase(),
-    convertToSharp(note2.value).toUpperCase(),
-    convertToSharp(note3.value).toUpperCase(),
-    convertToSharp(note4.value).toUpperCase()))
-  chordResult = chordResult.join('.').toString()
-  let firstDot = `.`
-  chordResult = firstDot.concat(chordResult)
-  console.log(`chord result is ${chordResult}`)
-  result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
-}
+window.addEventListener('keydown', function(e) {
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if(key==null) {return}
+  key.classList.add("playing")
+})
+
+
+window.addEventListener('keyup', function(e){
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if(key==null) {return}
+  key.classList.remove("playing")
+})
+
+
+// function removeTransition(e) {
+//   if(e.propertyName !== "transform") return
+//   this.classList.remove("playing")
+// }
+
+
+// const keys = document.querySelectorAll(".key")
+// keys.forEach(key => key.addEventListener('transitionend', removeTransition))
