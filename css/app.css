@@ -3,10 +3,13 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+  margin: 0.5rem;
   background: #222;
   color: #f0f0f0;
   font-size: 18px; }
+
+p {
+  margin: 0; }
 
 .measuring {
   margin: 1em 0.5em 0.5em 1em;
@@ -84,38 +87,29 @@ input[type="submit"] {
 .set {
   display: flex;
   width: fit-content;
-  margin-left: 1em;
+  margin: 2rem auto 2rem 1rem;
   border-radius: 1em; }
-
-.set .white {
-  height: 16em;
-  width: 3.5em;
-  z-index: 1;
-  border-left: 1px solid #bbb;
-  border-bottom: 1px solid #bbb;
-  border-radius: 0 0 5px 5px;
-  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2);
-  background-color: white; }
-
-.set .white:active {
-  border-top: 1px solid #777;
-  border-left: 1px solid #999;
-  border-bottom: 1px solid #999;
-  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.1) inset, -5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
-  background-color: white; }
-
-.black {
-  height: 8em;
-  width: 2em;
-  z-index: 2;
-  border: 1px solid #000;
-  border-radius: 0 0 3px 3px;
-  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
-  background: black; }
-
-.black:active {
-  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
-  background-color: black; }
+  .set .key:first-child {
+    border-radius: 5px 0 5px 5px; }
+  .set .key:last-child {
+    border-radius: 0 5px 5px 5px; }
+  .set .white {
+    height: 16em;
+    width: 3.5em;
+    z-index: 1;
+    border-left: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0 0 5px 5px;
+    box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset, 0 0 3px rgba(0, 0, 0, 0.2);
+    background-color: white; }
+  .set .black {
+    height: 8em;
+    width: 2em;
+    z-index: 2;
+    border: 1px solid #000;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset, 0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
+    background: black; }
 
 .a,
 .g,
@@ -148,45 +142,52 @@ input[type="submit"] {
 .as {
   transform: translateX(10px); }
 
-.set .key:first-child {
-  border-radius: 5px 0 5px 5px; }
-
-.set .key:last-child {
-  border-radius: 0 5px 5px 5px; }
-
-.key kbd {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0; }
-
-.key p {
-  font-size: 2rem;
-  color: darkcyan; }
-
-.white kbd {
-  color: black; }
-
-.black {
-  color: white; }
-
-.black kbd {
-  border: 1px solid white;
-  margin: 1rem 0 auto 0; }
-
 .key {
   transition: all 0.05s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center; }
+  .key kbd {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0; }
+
+.bemolle {
+  margin-left: -0.3rem; }
+
+.white kbd {
+  color: black; }
+
+.white p {
+  font-size: 2rem;
+  color: lightcoral; }
+
+.black {
+  color: white; }
+
+.black p {
+  color: lightcoral; }
+
+.black kbd {
+  border: 1px solid white;
+  margin: 1rem 0 auto 0; }
 
 .playing {
-  transition: all 0.05s ease-in-out;
-  background-color: lightgreen !important; }
+  transition: all 0.03s ease-in-out;
+  background-color: lightgreen !important;
+  box-shadow: -1px 0 0 lightgreen inset, 0 0 5px lightgreen inset, 0 0 3px rgba(0, 0, 0, 0.2) !important; }
+
+.sharp-note,
+.flat-note {
+  font-size: 1.3rem; }
+
+.natural-note {
+  font-size: 2rem; }
 
 /*# sourceMappingURL=app.css.map */

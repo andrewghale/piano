@@ -14,7 +14,7 @@
           >🎹🎼</span
         >
       </h1>
-      <ul>
+      <!-- <ul>
         <li>
           For now, type double accidentals as just one note higher or lower,
           e.g. "A" instead of "B♭♭"
@@ -22,7 +22,7 @@
         <li>The keyboard below will eventually be used somehow</li>
         <li>#</li>
         <li>♭</li>
-      </ul>
+      </ul> -->
       <!-- <form class="main-form">
         <label class="label" for="note1"
           >Note 1:
@@ -49,7 +49,7 @@
       </form> -->
       <p id="result">Result:</p>
     </div>
-    <div class="measuring">
+    <!-- <div class="measuring">
       <div class="key-measure int-c"></div>
       <div class="key-measure int-c"></div>
       <div class="key-measure int-d"></div>
@@ -75,107 +75,110 @@
       <div class="key-measure int-as2"></div>
       <div class="key-measure int-b2"></div>
       <div class="key-measure int-c3"></div>
-    </div>
+    </div> -->
     <div class="set">
       <div data-note="1" data-key="65" class="key white c">
         <kbd>A</kbd>
-        <p>C</p>
+        <p class="js-note">C</p>
       </div>
       <div data-note="2" data-key="87" class="key black cs">
         <kbd>W</kbd>
-        <p>C#</p>
+        <p class="js-note sharp-note">C#</p>
+        <p class="flat-note">D<span class="bemolle">♭</span></p>
       </div>
       <div data-note="3" data-key="83" class="key white d">
         <kbd>S</kbd>
-        <p>D</p>
+        <p class="js-note">D</p>
       </div>
       <div data-note="4" data-key="69" class="key black ds">
         <kbd>E</kbd>
-        <p>D#</p>
+        <p class="js-note sharp-note">D#</p>
+        <p class="flat-note">E<span class="bemolle">♭</span></p>
       </div>
       <div data-note="5" data-key="68" class="key white e">
         <kbd>D</kbd>
-        <p>E</p>
+        <p class="js-note">E</p>
       </div>
       <div data-note="6" data-key="70" class="key white f">
         <kbd>F</kbd>
-        <p>F</p>
+        <p class="js-note">F</p>
       </div>
       <div data-note="7" data-key="84" class="key black fs">
         <kbd>T</kbd>
-        <p>F#</p>
+        <p class="js-note sharp-note">F#</p>
+        <p class="flat-note">G<span class="bemolle">♭</span></p>
       </div>
       <div data-note="8" data-key="71" class="key white g">
         <kbd>G</kbd>
-        <p>G</p>
+        <p class="js-note">G</p>
       </div>
       <div data-note="9" data-key="89" class="key black gs">
         <kbd>Y</kbd>
-        <p>G#</p>
+        <p class="js-note sharp-note">G#</p>
+        <p class="flat-note">A<span class="bemolle">♭</span></p>
       </div>
       <div data-note="10" data-key="72" class="key white a">
         <kbd>H</kbd>
-        <p>A</p>
+        <p class="js-note">A</p>
       </div>
       <div data-note="11" data-key="85" class="key black as">
         <kbd>U</kbd>
-        <p>A#</p>
+        <p class="js-note sharp-note">A#</p>
+        <p class="flat-note">B<span class="bemolle">♭</span></p>
       </div>
       <div data-note="12" data-key="74" class="key white b">
         <kbd>J</kbd>
-        <p>B</p>
+        <p class="js-note">B</p>
       </div>
       <div data-note="13" data-key="75" class="key white c">
         <kbd>K</kbd>
-        <p>C</p>
+        <p class="js-note">C</p>
       </div>
       <div data-note="14" data-key="79" class="key black cs">
         <kbd>O</kbd>
-        <p>C#</p>
+        <p class="js-note sharp-note">C#</p>
+        <p class="flat-note">D<span class="bemolle">♭</span></p>
       </div>
       <div data-note="15" data-key="76" class="key white d">
         <kbd>L</kbd>
-        <p>D</p>
+        <p class="js-note">D</p>
       </div>
       <div data-note="16" data-key="80" class="key black ds">
         <kbd>P</kbd>
-        <p>D#</p>
+        <p class="js-note sharp-note">D#</p>
+        <p class="flat-note">E<span class="bemolle">♭</span></p>
       </div>
       <div data-note="17" data-key="186" class="key white e">
         <kbd>;</kbd>
-        <p>E</p>
+        <p class="js-note">E</p>
       </div>
       <div data-note="18" data-key="222" class="key white f">
         <kbd>'</kbd>
-        <p>F</p>
+        <p class="js-note">F</p>
       </div>
       <div data-note="19" data-key="84" class="key black fs">
-        <!-- <kbd>]</kbd> -->
-        <p>D#</p>
+        <p class="js-note sharp-note">F#</p>
+        <p class="flat-note">G<span class="bemolle">♭</span></p>
       </div>
       <div data-note="20" data-key="71" class="key white g">
-        <!-- <kbd>G</kbd> -->
-        <p>G</p>
+        <p class="js-note">G</p>
       </div>
       <div data-note="21" data-key="89" class="key black gs">
-        <!-- <kbd></kbd> -->
-        <p>G#</p>
+        <p class="js-note sharp-note">G#</p>
+        <p class="flat-note">A<span class="bemolle">♭</span></p>
       </div>
       <div data-note="22" data-key="72" class="key white a">
-        <!-- <kbd>H</kbd> -->
-        <p>A</p>
+        <p class="js-note">A</p>
       </div>
       <div data-note="23" data-key="85" class="key black as">
-        <!-- <kbd>U</kbd> -->
-        <p>A#</p>
+        <p class="js-note sharp-note">A#</p>
+        <p class="flat-note">B<span class="bemolle">♭</span></p>
       </div>
       <div data-note="24" data-key="74" class="key white b">
-        <!-- <kbd>J</kbd> -->
-        <p>B</p>
+        <p class="js-note">B</p>
       </div>
       <div data-note="25" data-key="75" class="key white c">
-        <!-- <kbd>K</kbd> -->
-        <p>C</p>
+        <p class="js-note">C</p>
       </div>
     </div>
     <!-- <script src="./js/main.js"></script> -->

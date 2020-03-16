@@ -2,10 +2,29 @@
 // const note2 = document.getElementById("note2Field")
 // const note3 = document.getElementById("note3Field")
 // const note4 = document.getElementById("note4Field")
-const result = document.getElementById("result")
 // const button = document.getElementById("submitGuess")
+const result = document.getElementById("result")
+
+let allowed = true;
+let notesArr = []
 
 const chordTypes = [
+  {
+    "code": ".",
+    "name": "",
+  },
+  {
+    "code": ".4",
+    "name": "",
+  },
+  {
+    "code": ".3",
+    "name": "m",
+  },
+  {
+    "code": ".7",
+    "name": "5",
+  },
   {
     "code": ".4.7",
     "name": "",
@@ -149,208 +168,52 @@ const makeChordCode = (note1, note2, note3, note4) => {
     "A#",
     "B"
   ]
-  note1Index = notesArr.indexOf(note1);
+  note1Index = notesArr.indexOf(note1)
   note2Index = notesArr.indexOf(note2, note1Index)
   note3Index = notesArr.indexOf(note3, note2Index)
   note4Index = notesArr.indexOf(note4, note3Index)
 
-  chord.push(note2Index - note1Index, note3Index - note1Index)
-  if (note4Index !== -1) {
+  // console.log(`${note2Index - note1Index}`)
+
+  if (Math.sign(note2Index - note1Index) !== -1) {
+    chord.push(note2Index - note1Index)
+  }
+  if (Math.sign(note3Index - note1Index) !== -1) {
+    chord.push(note3Index - note1Index)
+  }
+  if (Math.sign(note4Index - note1Index) !== -1) {
   chord.push(note4Index
      - note1Index
   )}
+  console.log(`chord is ${chord}`)
   return chord
 }
 
 const findChordTypes = (str) => {
-  let theResult = chordTypes.find((el) => el.code === str)
+  console.log(str)
+  const theResult = chordTypes.find((el) => el.code === str)
   if (theResult == undefined) {
     return
-  } else { return theResult.name }
-}
-
-const convertToSharp = (str) => {
-  if (str === `B♭` || str === "b♭") {
-    str = "A#"
-  } else if (str === "E♭" || str === "e♭") {
-    str = "D#"
-  } else if (str === "A♭" || str === "a♭") {
-    str = "G#"
-  } else if (str === "D♭" || str === "d♭") {
-    str = "C#"
-  } else if (str === "G♭" || str === "g♭") {
-    str = "F#"
-  } else if (str === "C♭" || str === "c♭") {
-    str = "B"
-  } else if (str === "F♭" || str === "f♭") {
-    str = "E"
-  }
-  return str
-}
-
-//
-// Find chord quality
-//
-const findChordQuality = (str) => {
-  if (str.includes("4") === true) {
-    // any chord with a 4 in the code has a major third
-    console.log("major")
-  return "major"
-  } else if (str.substring(0, 5).includes("3")){
-    // if 3 is included in first 5 characters, it is a minor 3rd. substring is used as a 13 chord with no 3rd would return as minor
-    console.log("minor")
-  return "minor"
-  }
-}
-
-
-//this works
-
-// str = `.2.3.7`
-// let chordName = ``
-//   if (str.includes(`.7`)) {
-//     if (str.includes(`.2`)) {
-//       if (!str.includes(`.3`)) {
-//           chordName += `sus2`
-//         }
-//       if (str.includes(`.3`)) {
-//           chordName += `minoradd9`
-//         }
-//       }
-//   }
-// console.log(chordName)
-
-
-// str = `.2.4.7`
-// let chordName = ``
-//   if (str.includes(`.7`)) {
-//     if (str.includes(`.2`)) {
-//       if (!str.includes(`.4`)) {
-//           chordName += `sus2`
-//         }
-//       if (str.includes(`.4`)) {
-//           chordName += `majoradd9`
-//         }
-//       }
-//   }
-// console.log(chordName)
-
-
-// Major, sus2, sus4, aug, dim or minor chord
-const makeTriad = (str) => {
-  chordName = ``
-  if (str.includes(`.7`)) {
-    if (str.includes(`.2`)) {
-      if (!str.includes(`.3`)) {
-          chordName += `sus2`
-        }
-      }
-    else if (str.includes(`.3`)) {
-      chordName += `minor`
-    } else if (str.includes(`.4`)) {
-      chordName += `major`
-    } else if (str.includes(`.5`)) {
-      chordName += `sus4`
-    } else {return (`not valid chord`)}
-  } else if (str.includes(`.6`)) {
-    if (str.includes(`.3`)) {
-      chordName += `dim`
-    } else if (str.includes(`.4`)) {
-      chordName += `major ♭5`
-    } else {return (`not valid chord`)}
-  } else if (str.includes(`.8`)) {
-    if (str.includes(`.4`)) {
-      chordName += `aug`
-    } else {return (`not valid chord`)}
-  }
-  return chordName
-}
-
-const seventh = (str) => {
-  addSeventh = ``
-  if (str.includes(`.10`)) {
-    addSeventh += `7`
-  } else if (str.includes(`.11`)){
-    addSeventh += `maj7`
-  }
-  return addSeventh
-}
-
-const secondOrNinth = (str) => {
-  let extension = ``
-  if (str.includes(`2`) && str.includes(`.3`) || str.includes(`2`) && str.includes(`.4`) ) {
-     extension += `add2`
-  } else if (str.includes(`.14`) && str.includes(`.3`) || str.includes(`.14`) && str.includes(`.4`) ) {
-    extension += `add9`
-  }
-  return extension
-}
-
-// 5 Chord
-const is5Chord = (str) => {
-  if (str === "7") {
-    return true
   } else {
-    return false
+    return theResult.name
   }
 }
 
-// function mainFunc() {
-//   let chordResult = (makeChordCode(
-//     convertToSharp(note1.value).toUpperCase(),
-//     convertToSharp(note2.value).toUpperCase(),
-//     convertToSharp(note3.value).toUpperCase(),
-//     convertToSharp(note4.value).toUpperCase())
-//   )
-//   chordResult = chordResult.join('.').toString()
-//   let firstDot = `.`
-//   chordResult = firstDot.concat(chordResult)
-//   console.log(`chord result is ${chordResult}`)
-//   result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
-// }
-
-// note1.addEventListener('keyup', function(){
-//   mainFunc()
-// })
-// note2.addEventListener('keyup', function(){
-//   mainFunc()
-// })
-// note3.addEventListener('keyup', function(){
-//   mainFunc()
-// })
-// note4.addEventListener('keyup', function(){
-//   mainFunc()
-// })
-
-// button.addEventListener('click', function(e) {
-//   e.preventDefault()
-//   mainFunc()
-// })
-
-let down = false
 window.addEventListener('keydown', function(e) {
-  // if (down===true) {return}
-  // down = true
   const key = document.querySelector(`.key[data-key="${e.keyCode}"] `)
-  const keyNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`)
-  console.log(keyNote.textContent)
-  if(key==null) {return}
+  if ( key==null ) {
+    return
+  }
   key.classList.add("playing")
-  // down = false
 })
-
 
 window.addEventListener('keyup', function(e){
-  // down = true
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-  const keyNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`)
-  console.log(keyNote.textContent)
-  if(key==null) {return}
+  if ( key==null ) {
+    return
+  }
   key.classList.remove("playing")
 })
-
-var allowed = true;
-let notesArr = []
 
 const sort = (str) => {
 //     let itemsOrdered = []
@@ -360,70 +223,43 @@ const sort = (str) => {
 //             itemsOrdered.push(theOrder[j]);
 //         }
 //     console.log(itemsOrdered);
-        console.log(str)
+//     console.log(str)
 //     }
 }
 
-// let theArr = ["C", "D#", "G"]
-
-// let chordResult = makeChordCode(...theArr)
-// chordResult = chordResult.join('.').toString()
-// let firstDot = `.`
-// chordResult = firstDot.concat(chordResult)
-// console.log(chordResult)
-
-
 window.addEventListener("keydown", function(e) {
-  if (event.repeat != undefined) {
+  let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] .js-note`).textContent
+  // console.log(oneNote)
+  if ( event.repeat != undefined ) {
     allowed = !event.repeat;
   }
-  if (!allowed) return;
+  if ( !allowed ) return
   allowed = false;
-    let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`).textContent
+  if (oneNote) {
     notesArr.push(oneNote)
-    console.log(notesArr)
-    let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+  }
+  let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+  if (theChordCode !== "") {
     let firstDot = `.`
     theChordCode = firstDot.concat(theChordCode)
-    console.log(theChordCode)
-    result.innerHTML = `${notesArr[0]} ${findChordTypes(theChordCode)}`
+    result.innerHTML = `Chord: ${notesArr[0]} ${findChordTypes(theChordCode)}`
+  }
 })
+
 window.addEventListener("keyup", function(e){
-    allowed = true;
-    let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`).textContent
+  let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] .js-note`).textContent
+  allowed = true;
+  if (oneNote) {
     notesArr.pop(oneNote)
-    let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
-    let firstDot = `.`
-    theChordCode = firstDot.concat(theChordCode)
-    console.log(theChordCode)
-    result.innerHTML = `${notesArr[0]} ${findChordTypes(theChordCode)}`
-
+  }
+  let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+  let firstDot = `.`
+  theChordCode = firstDot.concat(theChordCode)
+  if (notesArr === undefined || notesArr.length === 0) {
+    console.log(`empty array`)
+    result.innerHTML = `Chord:`
+  } else {
+  result.innerHTML = `Chord: ${notesArr[0]} ${findChordTypes(theChordCode)}`
+  }
 })
 
-
-//////
-// seems to work below
-
-// var allowed = true;
-// let notesArr = []
-
-// window.addEventListener("keydown", function(e) {
-//   if (event.repeat != undefined) {
-//     allowed = !event.repeat;
-//   }
-//   if (!allowed) return;
-//   allowed = false;
-// //     console.log("key down")
-//     let keyCode = e.keyCode.toString()
-//     notesArr.push(keyCode)
-//     console.log(notesArr.join(".").toString())
-// })
-// window.addEventListener("keyup", function(e){
-//     allowed = true;
-// //     console.log("key up")
-//     let keyCode = e.keyCode.toString()
-// //     console.log(e.keyCode)
-//     notesArr.pop(keyCode)
-//     console.log(notesArr.join(".").toString())
-
-// })
