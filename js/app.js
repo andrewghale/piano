@@ -1,9 +1,9 @@
-const note1 = document.getElementById("note1Field")
-const note2 = document.getElementById("note2Field")
-const note3 = document.getElementById("note3Field")
-const note4 = document.getElementById("note4Field")
+// const note1 = document.getElementById("note1Field")
+// const note2 = document.getElementById("note2Field")
+// const note3 = document.getElementById("note3Field")
+// const note4 = document.getElementById("note4Field")
 const result = document.getElementById("result")
-const button = document.getElementById("submitGuess")
+// const button = document.getElementById("submitGuess")
 
 const chordTypes = [
   {
@@ -295,59 +295,138 @@ const is5Chord = (str) => {
   }
 }
 
-function mainFunc() {
-  let chordResult = (makeChordCode(
-    convertToSharp(note1.value).toUpperCase(),
-    convertToSharp(note2.value).toUpperCase(),
-    convertToSharp(note3.value).toUpperCase(),
-    convertToSharp(note4.value).toUpperCase()))
-  chordResult = chordResult.join('.').toString()
-  let firstDot = `.`
-  chordResult = firstDot.concat(chordResult)
-  console.log(`chord result is ${chordResult}`)
-  result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
-}
+// function mainFunc() {
+//   let chordResult = (makeChordCode(
+//     convertToSharp(note1.value).toUpperCase(),
+//     convertToSharp(note2.value).toUpperCase(),
+//     convertToSharp(note3.value).toUpperCase(),
+//     convertToSharp(note4.value).toUpperCase())
+//   )
+//   chordResult = chordResult.join('.').toString()
+//   let firstDot = `.`
+//   chordResult = firstDot.concat(chordResult)
+//   console.log(`chord result is ${chordResult}`)
+//   result.innerHTML = `${note1.value.toUpperCase()} ${findChordTypes(chordResult)}`
+// }
 
-note1.addEventListener('keyup', function(){
-  mainFunc()
-})
-note2.addEventListener('keyup', function(){
-  mainFunc()
-})
-note3.addEventListener('keyup', function(){
-  mainFunc()
-})
-note4.addEventListener('keyup', function(){
-  mainFunc()
-})
+// note1.addEventListener('keyup', function(){
+//   mainFunc()
+// })
+// note2.addEventListener('keyup', function(){
+//   mainFunc()
+// })
+// note3.addEventListener('keyup', function(){
+//   mainFunc()
+// })
+// note4.addEventListener('keyup', function(){
+//   mainFunc()
+// })
 
-button.addEventListener('click', function(e) {
-  e.preventDefault()
-  mainFunc()
-})
+// button.addEventListener('click', function(e) {
+//   e.preventDefault()
+//   mainFunc()
+// })
 
+let down = false
 window.addEventListener('keydown', function(e) {
-  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  // if (down===true) {return}
+  // down = true
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"] `)
+  const keyNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`)
+  console.log(keyNote.textContent)
   if(key==null) {return}
   key.classList.add("playing")
+  // down = false
 })
 
 
 window.addEventListener('keyup', function(e){
+  // down = true
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  const keyNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`)
+  console.log(keyNote.textContent)
   if(key==null) {return}
   key.classList.remove("playing")
 })
 
+var allowed = true;
+let notesArr = []
 
-// function removeTransition(e) {
-//   if(e.propertyName !== "transform") return
-//   this.classList.remove("playing")
-// }
+const sort = (str) => {
+//     let itemsOrdered = []
+//     const theOrder = [65, 87, 83, 69, 68, 70, 84, 71, 89, 72, 85, 74, 75, 79, 76, 80, 186, 222]
+//     for (var j = 0; j <= str.length; j++) {
+//         if (notesArr.indexOf(theOrder[j]) > -1) {
+//             itemsOrdered.push(theOrder[j]);
+//         }
+//     console.log(itemsOrdered);
+        console.log(str)
+//     }
+}
+
+// let theArr = ["C", "D#", "G"]
+
+// let chordResult = makeChordCode(...theArr)
+// chordResult = chordResult.join('.').toString()
+// let firstDot = `.`
+// chordResult = firstDot.concat(chordResult)
+// console.log(chordResult)
 
 
-// const keys = document.querySelectorAll(".key")
-// keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+window.addEventListener("keydown", function(e) {
+  if (event.repeat != undefined) {
+    allowed = !event.repeat;
+  }
+  if (!allowed) return;
+  allowed = false;
+    let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`).textContent
+    notesArr.push(oneNote)
+    console.log(notesArr)
+    let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+    let firstDot = `.`
+    theChordCode = firstDot.concat(theChordCode)
+    console.log(theChordCode)
+    result.innerHTML = `${notesArr[0]} ${findChordTypes(theChordCode)}`
+})
+window.addEventListener("keyup", function(e){
+    allowed = true;
+    let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] p`).textContent
+    notesArr.pop(oneNote)
+    let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+    let firstDot = `.`
+    theChordCode = firstDot.concat(theChordCode)
+    console.log(theChordCode)
+    result.innerHTML = `${notesArr[0]} ${findChordTypes(theChordCode)}`
+
+})
+
+
+//////
+// seems to work below
+
+// var allowed = true;
+// let notesArr = []
+
+// window.addEventListener("keydown", function(e) {
+//   if (event.repeat != undefined) {
+//     allowed = !event.repeat;
+//   }
+//   if (!allowed) return;
+//   allowed = false;
+// //     console.log("key down")
+//     let keyCode = e.keyCode.toString()
+//     notesArr.push(keyCode)
+//     console.log(notesArr.join(".").toString())
+// })
+// window.addEventListener("keyup", function(e){
+//     allowed = true;
+// //     console.log("key up")
+//     let keyCode = e.keyCode.toString()
+// //     console.log(e.keyCode)
+//     notesArr.pop(keyCode)
+//     console.log(notesArr.join(".").toString())
+
+// })
 let context = null;
 let oscillator = null;
 

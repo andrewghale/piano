@@ -103,7 +103,7 @@
 
 .key p {
   font-size: 2rem;
-  color: black;
+  color: darkcyan;
 }
 
 .white kbd {
@@ -120,7 +120,7 @@
 }
 
 .key {
-  transition: all 0.08s ease-in-out;
+  transition: all 0.05s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -129,6 +129,6 @@
 
 .playing {
   // transform: scale(1.1);
-  transition: all 0.08s ease-in-out;
+  transition: all 0.05s ease-in-out;
   background-color: lightgreen !important;
 }
