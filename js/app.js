@@ -3,10 +3,11 @@
 // const note3 = document.getElementById("note3Field")
 // const note4 = document.getElementById("note4Field")
 // const button = document.getElementById("submitGuess")
-const result = document.getElementById("result")
+// const result = document.getElementById("result")
 
 let allowed = true;
 let notesArr = []
+let skippedNote = false
 
 const chordTypes = [
   {
@@ -78,8 +79,16 @@ const chordTypes = [
     "name": "m"
   },
   {
+    "code": ".3.7.13",
+    "name": "m add ♭9"
+  },
+  {
     "code": ".3.7.14",
-    "name": "m9"
+    "name": "m add9"
+  },
+  {
+    "code": ".3.7.17",
+    "name": "m add11"
   },
   {
     "code": ".3.7.9",
@@ -124,6 +133,18 @@ const chordTypes = [
   {
     "code": ".3.6.9",
     "name": "dim7"
+  },
+  {
+    "code": ".3.6.13",
+    "name": "dim ♭9"
+  },
+  {
+    "code": ".3.6.14",
+    "name": "dim 9"
+  },
+  {
+    "code": ".3.6.17",
+    "name": "dim 11"
   }
 ]
 
@@ -185,7 +206,7 @@ const makeChordCode = (note1, note2, note3, note4) => {
   chord.push(note4Index
      - note1Index
   )}
-  console.log(`chord is ${chord}`)
+  // console.log(`chord is ${chord}`)
   return chord
 }
 
@@ -217,7 +238,7 @@ window.addEventListener('keyup', function(e){
 
 const sort = (str) => {
 //     let itemsOrdered = []
-//     const theOrder = [65, 87, 83, 69, 68, 70, 84, 71, 89, 72, 85, 74, 75, 79, 76, 80, 186, 222]
+//     const theOrder = [65, 87, 83, 69, 68, 70, 84, 71, 89, 72, 85, 74, 75, 79, 76, 80, 186, 222, 221, 220]
 //     for (var j = 0; j <= str.length; j++) {
 //         if (notesArr.indexOf(theOrder[j]) > -1) {
 //             itemsOrdered.push(theOrder[j]);
@@ -229,13 +250,16 @@ const sort = (str) => {
 
 window.addEventListener("keydown", function(e) {
   let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] .js-note`).textContent
-  // console.log(oneNote)
+  console.log(oneNote)
   if ( event.repeat != undefined ) {
     allowed = !event.repeat;
   }
   if ( !allowed ) return
   allowed = false;
-  if (oneNote) {
+  if (notesArr.includes(oneNote)) {
+    skippedNote = true
+  }
+  if (oneNote && !notesArr.includes(oneNote)) {
     notesArr.push(oneNote)
   }
   let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
@@ -249,9 +273,10 @@ window.addEventListener("keydown", function(e) {
 window.addEventListener("keyup", function(e){
   let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] .js-note`).textContent
   allowed = true;
-  if (oneNote) {
+  if (oneNote && skippedNote !== true) {
     notesArr.pop(oneNote)
   }
+  skippedNote = false
   let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
   let firstDot = `.`
   theChordCode = firstDot.concat(theChordCode)
