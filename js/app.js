@@ -181,6 +181,7 @@ const chordTypes = [
 
 const makeChordCode = (...arr) => {
   let chord = []
+  // array of musical notes
   const notesArrChordCode = [
     "C",
     "C#",
@@ -231,19 +232,25 @@ const makeChordCode = (...arr) => {
 }
 
 const findChordTypes = str => {
+  // str is the chord code e.g. ".4.7.11"
+  // theResult is an object e.g. {code: ".5.7", name: "sus4"}
   const theResult = chordTypes.find((el) => el.code === str)
   if (theResult !== undefined)
-  return theResult.name
+    return theResult.name
 }
+
+//
+// Add and Remove CSS Classes
+// get the DOM element via data-key and use it if not null
 
 const removePlaying = e => {
   const keyRemove = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-  if ( keyRemove !== null ) keyRemove.classList.remove("playing")
+  if ( keyRemove !== null ) keyRemove.classList.remove(`playing`)
 }
 
 const addPlaying = e => {
   const keyAdd = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-  if ( keyAdd !== null ) keyAdd.classList.add("playing")
+  if ( keyAdd !== null ) keyAdd.classList.add(`playing`)
 }
 
 // const sort = (str) => {
@@ -260,6 +267,7 @@ const addPlaying = e => {
 
 const addNote = e => {
   if (document.querySelector(`.key[data-key="${e.keyCode}"]`)) {
+    // oneNote is the musical note name e.g. C OR F
     let oneNote = document.querySelector(`.key[data-key="${e.keyCode}"] .js-note`).textContent
     if ( event.repeat != undefined ) {
       allowed = !event.repeat
@@ -270,20 +278,10 @@ const addNote = e => {
       skippedNote = true
     if (oneNote && !notesArr.includes(oneNote)) {
       notesArr.push(oneNote)
-      // const jsonObj = {
-      //   note: `${oneNote}`,
-      //   keyCode: `${e.keyCode}`
-      // }
-      // notesArr = [...notesArr, jsonObj]
-      // notesArr.push(jsonObj)
-      // testArr.push(jsonObj)
-      // notesArr = testArr
     }
-    // console.log(testArr)
-    // console.log(notesArr)
     let theChordCode = (makeChordCode(...notesArr))
     .join(".").toString()
-    if (theChordCode !== "") {
+    if (theChordCode !== ``) {
       theChordCode = `.`.concat(theChordCode)
       result.innerHTML = `Chord: ${notesArr[0]} ${findChordTypes(theChordCode)}`
     }
@@ -302,7 +300,7 @@ const removeNote = e => {
 
     skippedNote = false
 
-    let theChordCode = (makeChordCode(...notesArr)).join(".").toString()
+    let theChordCode = (makeChordCode(...notesArr)).join(`.`).toString()
     theChordCode = `.`.concat(theChordCode)
 
     if (notesArr === undefined || notesArr.length === 0) {
