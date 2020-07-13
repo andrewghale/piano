@@ -1,0 +1,347 @@
+[
+  {
+    "name": "augmented",
+    "code": "0.4.8",
+    "quality": "augmented"
+  },
+  {
+    "name": "augmented-eleventh",
+    "code": "0.4.7.10.14.18",
+    "quality": "major"
+  },
+  {
+    "name": "augmented-major-seventh",
+    "code": "0.4.8.11",
+    "quality": "augmented"
+  },
+  {
+    "name": "augmented-seventh",
+    "code": "0.4.8.10",
+    "quality": "augmented"
+  },
+  {
+    "name": "augmented-sixth",
+    "code": "0.6.10",
+    "quality": "predominant"
+  },
+  {
+    "name": "diminished",
+    "code": "0.3.6",
+    "quality": "diminished"
+  },
+  {
+    "name": "diminished-major-seventh",
+    "code": "0.3.6.11",
+    "quality": "diminished"
+  },
+  {
+    "name": "diminished-seventh",
+    "code": "0.3.6.9",
+    "quality": "diminished"
+  },
+  {
+    "name": "dominant",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-eleventh",
+    "code": "0.4.7.10.14.17",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-minor-ninth",
+    "code": "0.4.7.10.13",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-ninth",
+    "code": "0.4.7.10.14",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-parallel",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "dominant-seventh",
+    "code": "0.4.7.10",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-seventh-flat-five",
+    "code": "0.4.6.10",
+    "quality": "diminished"
+  },
+  {
+    "name": "dominant-seventh-sharp-nine",
+    "code": "0.4.7.10.15",
+    "quality": "major"
+  },
+  {
+    "name": "dominant-thirteenth",
+    "code": "0.4.7.10.14.17.9",
+    "quality": "major"
+  },
+  {
+    "name": "dream",
+    "code": "0.5.6.7",
+    "quality": "just"
+  },
+  {
+    "name": "elektra",
+    "code": "0.7.9.13.16",
+    "quality": "bitonal"
+  },
+  {
+    "name": "farben",
+    "code": "0.8.11.16.21",
+    "quality": "atonal"
+  },
+  {
+    "name": "half-diminished-seventh",
+    "code": "0.3.6.10",
+    "quality": "diminished"
+  },
+  {
+    "name": "harmonic-seventh",
+    "code": "0.4.7.10",
+    "quality": "major"
+  },
+  {
+    "name": "leading-tone-triad",
+    "code": "0.3.6",
+    "quality": "diminished"
+  },
+  {
+    "name": "lydian",
+    "code": "0.4.7.11.18",
+    "quality": "major"
+  },
+  {
+    "name": "magic",
+    "code": "0.1.5.6.10.12.15.17",
+    "quality": "just"
+  },
+  {
+    "name": "major",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "major-eleventh",
+    "code": "0.4.7.11.14.17",
+    "quality": "major"
+  },
+  {
+    "name": "major-seventh",
+    "code": "0.4.7.11",
+    "quality": "major"
+  },
+  {
+    "name": "major-seventh-sharp-eleventh",
+    "code": "0.4.8.11.18",
+    "quality": "augmented"
+  },
+  {
+    "name": "major-sixth",
+    "code": "0.4.7.9",
+    "quality": "major"
+  },
+  {
+    "name": "major-sixth-ninth",
+    "code": "0.4.7.9.14",
+    "quality": "major"
+  },
+  {
+    "name": "major-ninth",
+    "code": "0.4.7.11.14",
+    "quality": "major"
+  },
+  {
+    "name": "major-thirteenth",
+    "code": "0.4.7.11.14.18.9",
+    "quality": "major"
+  },
+  {
+    "name": "mediant",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "minor",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-eleventh",
+    "code": "0.3.7.10.14.17",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-major-seventh",
+    "code": "0.3.7.11",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-ninth",
+    "code": "0.3.7.10.14",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-seventh",
+    "code": "0.3.7.10",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-sixth",
+    "code": "0.3.7.9",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-sixth-ninth",
+    "code": "0.3.7.9.14",
+    "quality": "minor"
+  },
+  {
+    "name": "minor-thirteenth",
+    "code": "0.3.7.10.14.17.9",
+    "quality": "minor"
+  },
+  {
+    "name": "mu",
+    "code": "0.2.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "mystic",
+    "code": "0.6.10.16.21.14",
+    "quality": "atonal"
+  },
+  {
+    "name": "neapolitan",
+    "code": "1.5.8",
+    "quality": "major"
+  },
+  {
+    "name": "ninth-augmented-fifth",
+    "code": "0.4.8.10.14",
+    "quality": "augmented"
+  },
+  {
+    "name": "ninth-flat-fifth",
+    "code": "0.4.6.10.14",
+    "quality": "m3+d5"
+  },
+  {
+    "name": "northern-lights",
+    "code": "1.2.8.12.15.18.19.22.23.28.31",
+    "quality": "atonal"
+  },
+  {
+    "name": "ode-to-napoleon",
+    "code": "0.1.4.5.8.9",
+    "quality": "atonal"
+  },
+  {
+    "name": "petrushka",
+    "code": "0.1.4.6.7.10",
+    "quality": "bitonal"
+  },
+  {
+    "name": "power-p5",
+    "code": "0.7",
+    "quality": "indeterminate"
+  },
+  {
+    "name": "psalms",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "secondary-dominant",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "secondary-leading-tone",
+    "code": "0.3.6",
+    "quality": "diminished"
+  },
+  {
+    "name": "secondary-supertonic",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "seven-six",
+    "code": "0.4.7.9.10",
+    "quality": "major"
+  },
+  {
+    "name": "seventh-suspension-four",
+    "code": "0.5.7.10",
+    "quality": "suspended"
+  },
+  {
+    "name": "so-what",
+    "code": "0.5.10.15.19",
+    "quality": "bitonal"
+  },
+  {
+    "name": "suspended",
+    "code": "0.5.7",
+    "quality": "suspended"
+  },
+  {
+    "name": "subdominant",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "subdominant-parallel",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "submediant",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "subtonic",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "supertonic",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "tonic-counter-parallel",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "tonic",
+    "code": "0.4.7",
+    "quality": "major"
+  },
+  {
+    "name": "tonic-parallel",
+    "code": "0.3.7",
+    "quality": "minor"
+  },
+  {
+    "name": "tristan",
+    "code": "0.3.6.10",
+    "quality": "predominant"
+  },
+  {
+    "name": "viennese-tri",
+    "code": "0.6.7",
+    "quality": "atonal"
+  }
+]
