@@ -330,98 +330,100 @@ const makeChordCode = (...arr) => {
   // e.g. ["C4", "D#4", "G4"]
   // returns semitone intervals (root note included in output)
   //e.g. [4, 7]
-  let chord = [];
-  arr.map((c) => chord.push(sortingArr.indexOf(c)));
-  return chord.map((c) => c - chord[0]);
+  let chord = []
+  arr.map((c) => chord.push(sortingArr.indexOf(c)))
+  // subtract first note value from all values to get
+  // relative pitches (first note will now be zero)
+  return chord.map((c) => c - chord[0])
 };
 
 const findChordTypes = (str) => {
   // str is the chord code e.g. ".4.7.11"
   // chord is an object e.g. {code: ".5.7", name: "sus4"}
-  const chord = chordTypes.find((el) => el.code === str);
-  return chord === undefined ? `` : chord.name;
-};
+  const chord = chordTypes.find((el) => el.code === str)
+  return chord === undefined ? `` : chord.name
+}
 
 //
 // Add and Remove CSS Classes
 // get the DOM element via data-key and use it if not null
 
-const addNote = (e) => {
+const addNote = e => {
   if (document.querySelector(`.key[data-key="${e.keyCode}"]`)) {
     // oneNote is the musical note name e.g. C OR F
     let oneNote = document.querySelector(
       `.key[data-key="${e.keyCode}"] .js-note`
-    ).textContent;
+    ).textContent
     if (event.repeat != undefined) {
-      allowed = !event.repeat;
+      allowed = !event.repeat
     }
-    if (!allowed) return;
-    allowed = false;
-    if (notesArr.includes(oneNote)) skippedNote = true;
+    if (!allowed) return
+    allowed = false
+   //  console.log(notesArr)
+    if (notesArr.includes(oneNote)) {skippedNote = true}
     if (oneNote && !notesArr.includes(oneNote)) {
-      notesArr.push(oneNote);
+      notesArr.push(oneNote)
     }
+    // notesArr is sorted here from lower pitch to higher pitch notes
+    // join array of numbers with dots and convert to string, now these codes
+    // will be in the format found in the chordTypes object
     let theChordCode = makeChordCode(
-      ...notesArr.sort((a, b) => sortingArr.indexOf(a) - sortingArr.indexOf(b))
-    )
+      ...notesArr.sort((a, b) => sortingArr.indexOf(a) - sortingArr.indexOf(b)))
       .join(".")
-      .toString();
-    console.log(theChordCode);
+      .toString()
+   // display root note of chord (remove octave number) with chord name
     if (theChordCode !== ``) {
-      result.innerHTML = `Chord: ${notesArr[0].replace(
-        /\d/g,
-        ""
-      )} ${findChordTypes(theChordCode)}`;
+      result.innerHTML = `
+         Chord: ${notesArr[0].replace(/\d/g,"")} ${findChordTypes(theChordCode)}
+      `
     }
   }
 };
 
-const removeNote = (e) => {
-  if (document.querySelector(`.key[data-key="${e.keyCode}"]`)) {
-    let oneNote = document.querySelector(
-      `.key[data-key="${e.keyCode}"] .js-note`
-    ).textContent;
-    allowed = true;
-    if (oneNote && skippedNote !== true) {
-      notesArr.pop(oneNote);
-    }
-    skippedNote = false;
-    let theChordCode = makeChordCode(
+const removeNote = e => {
+   if (document.querySelector(`.key[data-key="${e.keyCode}"]`)) {
+      let oneNote = document.querySelector(
+         `.key[data-key="${e.keyCode}"] .js-note`
+      ).textContent
+   allowed = true
+   // find index of removed note in notesArr, remove from notesArr
+   notesArr.splice(notesArr.indexOf(oneNote), 1)
+   skippedNote = false
+   let theChordCode = makeChordCode(
       ...notesArr.sort((a, b) => sortingArr.indexOf(a) - sortingArr.indexOf(b))
-    )
-      .join(".")
-      .toString();
-    console.log(theChordCode);
-    if (notesArr === undefined || notesArr.length === 0) {
-      result.innerHTML = `Chord:`;
-    } else {
-      result.innerHTML = `Chord: ${notesArr[0].replace(
-        /\d/g,
-        ""
-      )} ${findChordTypes(theChordCode)}`;
-    }
-  }
-};
+      )
+      .join(`.`)
+      .toString()
+   if (notesArr === undefined || notesArr.length === 0) {
+      // if array is empty, or no chord found
+      result.innerHTML = `Chord: N/A`
+   } else {
+      result.innerHTML = `
+         Chord: ${notesArr[0].replace(/\d/g,``)} ${findChordTypes(theChordCode)}
+         `
+      }
+   }
+}
 
-const removePlaying = (e) => {
-  const keyRemove = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  if (keyRemove !== null) keyRemove.classList.remove(`playing`);
-};
+const removePlaying = e => {
+  const keyRemove = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if (keyRemove !== null) keyRemove.classList.remove(`playing`)
+}
 
-const addPlaying = (e) => {
-  const keyAdd = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  if (keyAdd !== null) keyAdd.classList.add(`playing`);
-};
+const addPlaying = e => {
+  const keyAdd = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+  if (keyAdd !== null) keyAdd.classList.add(`playing`)
+}
 
-window.addEventListener("keydown", (e) => {
-  addNote(e);
-  addPlaying(e);
-});
+window.addEventListener("keydown", e => {
+  addNote(e)
+  addPlaying(e)
+})
 
-window.addEventListener("keyup", (e) => {
-  removeNote(e);
-  removePlaying(e);
-});
+window.addEventListener("keyup", e => {
+  removeNote(e)
+  removePlaying(e)
+})
 
 let context = null;
 let oscillator = null;
