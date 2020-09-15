@@ -10,72 +10,12 @@
   <body>
     <div class="main-container">
       <h1>
-        <span class="emojis">🎼🎹</span>Chord Analyzer<span class="emojis"
-          >🎹🎼</span
-        >
+        <span class="emojis">🎼🎹</span>Chord Analyzer<span class="emojis">
+          🎹🎼
+        </span>
       </h1>
-      <!-- <ul>
-        <li>
-          For now, type double accidentals as just one note higher or lower,
-          e.g. "A" instead of "B♭♭"
-        </li>
-        <li>The keyboard below will eventually be used somehow</li>
-        <li>#</li>
-        <li>♭</li>
-      </ul> -->
-      <!-- <form class="main-form">
-        <label class="label" for="note1"
-          >Note 1:
-          <input type="text" id="note1Field" class="note1" maxlength="3" />
-        </label>
-        <label class="label" for="note2"
-          >Note 2:
-          <input type="text" id="note2Field" class="note2" maxlength="3" />
-        </label>
-        <label class="label" for="note3"
-          >Note 3:
-          <input type="text" id="note3Field" class="note3" maxlength="3" />
-        </label>
-        <label class="label" for="note4"
-          >Note 4:
-          <input type="text" id="note4Field" class="note4" maxlength="3" />
-        </label>
-        <input
-          type="submit"
-          value="Submit"
-          class="guessSubmit button"
-          id="submitGuess"
-        />
-      </form> -->
-      <p id="result">Result:</p>
+      <p id="result">Chord: N/A</p>
     </div>
-    <!-- <div class="measuring">
-      <div class="key-measure int-c"></div>
-      <div class="key-measure int-c"></div>
-      <div class="key-measure int-d"></div>
-      <div class="key-measure int-ds"></div>
-      <div class="key-measure int-e"></div>
-      <div class="key-measure int-f"></div>
-      <div class="key-measure int-fs"></div>
-      <div class="key-measure int-g"></div>
-      <div class="key-measure int-gs"></div>
-      <div class="key-measure int-a"></div>
-      <div class="key-measure int-as"></div>
-      <div class="key-measure int-b"></div>
-      <div class="key-measure int-c2"></div>
-      <div class="key-measure int-cs2"></div>
-      <div class="key-measure int-d2"></div>
-      <div class="key-measure int-ds2"></div>
-      <div class="key-measure int-e2"></div>
-      <div class="key-measure int-f2"></div>
-      <div class="key-measure int-fs2"></div>
-      <div class="key-measure int-g2"></div>
-      <div class="key-measure int-gs2"></div>
-      <div class="key-measure int-a2"></div>
-      <div class="key-measure int-as2"></div>
-      <div class="key-measure int-b2"></div>
-      <div class="key-measure int-c3"></div>
-    </div> -->
     <div class="set">
       <div data-note="1" data-key="65" class="key white c">
         <kbd>A</kbd>
@@ -84,7 +24,7 @@
       <div data-note="2" data-key="87" class="key black cs">
         <kbd>W</kbd>
         <p class="js-note sharp-note">C#4</p>
-        <p class="flat-note">D4<span class="bemolle">♭</span></p>
+        <p class="flat-note">D<span class="bemolle">♭</span>4</p>
       </div>
       <div data-note="3" data-key="83" class="key white d">
         <kbd>S</kbd>
@@ -93,7 +33,7 @@
       <div data-note="4" data-key="69" class="key black ds">
         <kbd>E</kbd>
         <p class="js-note sharp-note">D#4</p>
-        <p class="flat-note">E4<span class="bemolle">♭</span></p>
+        <p class="flat-note">E<span class="bemolle">♭</span>4</p>
       </div>
       <div data-note="5" data-key="68" class="key white e">
         <kbd>D</kbd>
@@ -106,7 +46,7 @@
       <div data-note="7" data-key="84" class="key black fs">
         <kbd>T</kbd>
         <p class="js-note sharp-note">F#4</p>
-        <p class="flat-note">G4<span class="bemolle">♭</span></p>
+        <p class="flat-note">G<span class="bemolle">♭</span>4</p>
       </div>
       <div data-note="8" data-key="71" class="key white g">
         <kbd>G</kbd>
@@ -115,7 +55,7 @@
       <div data-note="9" data-key="89" class="key black gs">
         <kbd>Y</kbd>
         <p class="js-note sharp-note">G#4</p>
-        <p class="flat-note">A4<span class="bemolle">♭</span></p>
+        <p class="flat-note">A<span class="bemolle">♭</span>4</p>
       </div>
       <div data-note="10" data-key="72" class="key white a">
         <kbd>H</kbd>
@@ -124,7 +64,7 @@
       <div data-note="11" data-key="85" class="key black as">
         <kbd>U</kbd>
         <p class="js-note sharp-note">A#4</p>
-        <p class="flat-note">B4<span class="bemolle">♭</span></p>
+        <p class="flat-note">B<span class="bemolle">♭</span>4</p>
       </div>
       <div data-note="12" data-key="74" class="key white b">
         <kbd>J</kbd>
@@ -137,7 +77,7 @@
       <div data-note="14" data-key="79" class="key black cs">
         <kbd>O</kbd>
         <p class="js-note sharp-note">C#5</p>
-        <p class="flat-note">D5<span class="bemolle">♭</span></p>
+        <p class="flat-note">D<span class="bemolle">♭</span>5</p>
       </div>
       <div data-note="15" data-key="76" class="key white d">
         <kbd>L</kbd>
@@ -146,7 +86,7 @@
       <div data-note="16" data-key="80" class="key black ds">
         <kbd>P</kbd>
         <p class="js-note sharp-note">D#5</p>
-        <p class="flat-note">E5<span class="bemolle">♭</span></p>
+        <p class="flat-note">E<span class="bemolle">♭</span>5</p>
       </div>
       <div data-note="17" data-key="186" class="key white e">
         <kbd class="semi-colon">;</kbd>
@@ -159,7 +99,7 @@
       <div data-note="19" data-key="221" class="key black fs">
         <kbd class="crotchet">]</kbd>
         <p class="js-note sharp-note">F#5</p>
-        <p class="flat-note">G5<span class="bemolle">♭</span></p>
+        <p class="flat-note">G<span class="bemolle">♭</span>5</p>
       </div>
       <div data-note="20" data-key="220" class="key white g">
         <kbd>\</kbd>
@@ -167,14 +107,14 @@
       </div>
       <div class="key black gs">
         <p class="js-note sharp-note">G#5</p>
-        <p class="flat-note">A5<span class="bemolle">♭</span></p>
+        <p class="flat-note">A<span class="bemolle">♭</span>5</p>
       </div>
       <div class="key white a">
         <p class="js-note">A5</p>
       </div>
       <div class="key black as">
         <p class="js-note sharp-note">A#5</p>
-        <p class="flat-note">B5<span class="bemolle">♭</span></p>
+        <p class="flat-note">B<span class="bemolle">♭</span>5</p>
       </div>
       <div class="key white b">
         <p class="js-note">B5</p>
